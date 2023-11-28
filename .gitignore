@@ -1,3 +1,6 @@
 venv/
 venv/lib/python3.11/site-packages/PySide6/lupdate
 venv/lib/python3.11/site-packages/PySide6/Qt/lib/QtWebEngineCore.framework/Versions/A/QtWebEngineCore
+.idea
+.gitignore
+application.sqlite
