@@ -2,18 +2,27 @@ import os
 import sys
 
 from PySide6.QtWidgets import QApplication
-
-from models.database import DATABASE_NAME, Session
-from models.database_worker import create_database, Worker
+from models.database import Session, engin
+from models.database_worker import  Worker
 from ui.mainwindow import MainWindow
+from sqlalchemy_utils import database_exists
+from models.database_worker import create_database
 
 
 if __name__ == '__main__':
-    db_is_created = os.path.exists(DATABASE_NAME)
-    if not db_is_created:
+    """
+    entry point
+    """
+    if not database_exists(engin.url):
         create_database()
+        from models.database_worker import create_tables
+        create_tables()
 
     app = QApplication()
     window = MainWindow(Worker(Session()))
+    window.setWindowTitle('Alexandria')
+    window.setFixedSize(1280, 720)
     window.show()
     sys.exit(app.exec())
+
+

@@ -4,3 +4,4 @@ venv/lib/python3.11/site-packages/PySide6/Qt/lib/QtWebEngineCore.framework/Versi
 .idea
 .gitignore
 application.sqlite
+config.py

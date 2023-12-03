@@ -8,8 +8,15 @@ from PySide6.QtGui import QCloseEvent
 
 
 class MainWindow(QMainWindow):
-
+    """
+    Класс MainWindow представляет главное окно приложения.
+    """
     def __init__(self, worker: Worker):
+        """
+        Инициализирует экземпляр класса MainWindow.
+
+        :param worker: Объект Worker.
+        """
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
