@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="pic">
+    <file>alexanddria-logo50.png</file>
+    <file>pic_bg.jpg</file>
+  </qresource>
+</RCC>

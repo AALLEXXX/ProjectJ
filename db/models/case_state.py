@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, Column, String
 from sqlalchemy.orm import relationship
 
-from models.database import Base
+from db.database import Base
 
 
 class CaseState(Base):

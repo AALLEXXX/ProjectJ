@@ -1,11 +1,12 @@
-import PySide6
-from PySide6.QtWidgets import QMainWindow
+import sys
 
-from models.database_worker import Worker
+import PySide6
+from PySide6.QtWidgets import QMainWindow, QDialog
+from db.database_worker import Worker
 from ui.qt_base_ui.ui_mainwindow import Ui_MainWindow
 from ui.caselistwidget import CaseListWidget
 from PySide6.QtGui import QCloseEvent
-
+from ui.log_in_window import Login_window
 
 class MainWindow(QMainWindow):
     """
@@ -21,8 +22,19 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.worker = worker
-        for it in worker.getStates():
-            self.ui.todoListLayout.addWidget(CaseListWidget(it, worker))
+        self.process_authorization()
+    def process_authorization(self):
+        login_window = Login_window(self.worker)
+        result = login_window.exec_()
+        if result == QDialog.Accepted:
+            self.user = login_window.log_in_but()
+            self.ui.user_name_label.setText(self.user.name)
+            self.show()
+            for it in self.worker.getStates():
+                self.ui.todoListLayout.addWidget(CaseListWidget(it, self.worker, user=self.user))
+        elif result == QDialog.Rejected:
+            sys.exit(0)
+
 
     def closeEvent(self, event: PySide6.QtGui.QCloseEvent) -> None:
-        del self.worker
+        self.worker.save_data()

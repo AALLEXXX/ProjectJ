@@ -3,28 +3,35 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_casewidget.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.0.3
+## Created by: Qt User Interface Compiler version 6.6.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
+    QLineEdit, QSizePolicy, QTextEdit, QVBoxLayout,
+    QWidget)
 
 class Ui_CaseWidget(object):
     def setupUi(self, CaseWidget):
         if not CaseWidget.objectName():
             CaseWidget.setObjectName(u"CaseWidget")
-        CaseWidget.resize(319, 288)
+        CaseWidget.resize(319, 307)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(CaseWidget.sizePolicy().hasHeightForWidth())
         CaseWidget.setSizePolicy(sizePolicy)
         CaseWidget.setMinimumSize(QSize(180, 0))
-        CaseWidget.setStyleSheet(u"background-color: rgb(255, 0, 0);\n"
+        CaseWidget.setStyleSheet(u"\n"
+"background-color: rgb(103, 200, 99);\n"
 "border-radius: 5px;")
         self.verticalLayout_3 = QVBoxLayout(CaseWidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -46,7 +53,8 @@ class Ui_CaseWidget(object):
         self.targetEdit = QLineEdit(self.groupBox_2)
         self.targetEdit.setObjectName(u"targetEdit")
         self.targetEdit.setFont(font)
-        self.targetEdit.setStyleSheet(u"background-color: rgb(0, 0, 0);")
+        self.targetEdit.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);")
 
         self.horizontalLayout.addWidget(self.targetEdit)
 
@@ -64,7 +72,8 @@ class Ui_CaseWidget(object):
         self.descriptionEdit = QTextEdit(self.groupBox)
         self.descriptionEdit.setObjectName(u"descriptionEdit")
         self.descriptionEdit.setFont(font)
-        self.descriptionEdit.setStyleSheet(u"background-color: rgb(0, 0, 0);")
+        self.descriptionEdit.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);")
 
         self.verticalLayout.addWidget(self.descriptionEdit)
 
@@ -85,5 +94,10 @@ class Ui_CaseWidget(object):
         self.groupBox_2.setTitle("")
         self.label.setText(QCoreApplication.translate("CaseWidget", u"\u0426\u0435\u043b\u044c", None))
         self.groupBox.setTitle(QCoreApplication.translate("CaseWidget", u"\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435", None))
+        self.descriptionEdit.setHtml(QCoreApplication.translate("CaseWidget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:12pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
     # retranslateUi
 

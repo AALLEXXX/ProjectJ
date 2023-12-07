@@ -11,8 +11,6 @@ def get_engin(user, passwd, host, db):
 
 
 
-
-
 def get_engin_from_settings():
     keys = ['pguser', 'pgpasswd', 'pghost', 'pgdb']
     if not all(key in keys for key in settings.keys()):
@@ -24,7 +22,7 @@ def get_engin_from_settings():
 engin = get_engin_from_settings()
 def get_session():
     engin = get_engin_from_settings()
-    session = sessionmaker(bind=engin)
+    session = sessionmaker(bind=engin, expire_on_commit=False)
     return session
 
 Session = get_session()

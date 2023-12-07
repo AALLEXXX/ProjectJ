@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QWidget
 from PySide6.QtCore import Slot
 
-from models.case import Case
+from db.models.case import Case
 from ui.qt_base_ui.ui_casewidget import Ui_CaseWidget
 
 
@@ -42,4 +42,5 @@ class CaseWidget(QWidget):
         Слот, вызываемый при изменении текста в поле 'Описание'.
         Обновляет данные об описании задачи в объекте Case.
         """
+
         self.data.description = self.ui.descriptionEdit.toPlainText()

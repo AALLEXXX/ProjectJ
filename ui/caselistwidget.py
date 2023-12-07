@@ -1,9 +1,10 @@
 from PySide6.QtCore import Slot, Qt
 from PySide6.QtWidgets import QWidget, QAbstractItemView, QListWidgetItem, QListWidget
-
-from models.database_worker import Worker
-from models.case import Case
-from models.case_state import CaseState
+from db.database_worker import Worker
+from db.models.case import Case
+from db.models.case_state import CaseState
+from db.models.user import User
+from ui.case_data_window import ExtraWindow
 from ui.qt_base_ui.ui_todolist import Ui_ToDoListWidget
 from ui.casewidget import CaseWidget
 
@@ -53,20 +54,17 @@ class MyListWidget(QListWidget):
         :param last: Индекс последней вставленной строки.
         :type last: int
         """
-
         for it in range(first, last + 1):
             item = self.item(it)
             if item is not None:
-                data = item.data(Qt.UserRole)
+                data:Case = item.data(Qt.UserRole)
                 if data is not None and data.case_state != self.id_state:
+                    data:Case
                     data.case_state = self.id_state
                     data.update_state()
-                    widget = CaseWidget(data)
-                    item.setSizeHint(widget.sizeHint())
-                    self.setItemWidget(item, widget)
-            else:
-                raise 'item is None '
-
+                widget = CaseWidget(data)
+                item.setSizeHint(widget.sizeHint())
+                self.setItemWidget(item, widget)
 
 class CaseListWidget(QWidget):
     """
@@ -78,7 +76,7 @@ class CaseListWidget(QWidget):
     :param worker: Объект Worker, предоставляющий интерфейс для работы с базой данных.
     :type worker: Worker
     """
-    def __init__(self, case_state: CaseState, worker: Worker):
+    def __init__(self, case_state: CaseState, worker: Worker, user: User):
         """
         Инициализирует экземпляр класса CaseListWidget.
 
@@ -93,15 +91,15 @@ class CaseListWidget(QWidget):
         self.ui.setupUi(self)
         self.case_state = case_state
         self.worker = worker
-        self.worker.session.expire_on_commit = False
+        self.user = user
         self.ui.groupBox.setTitle(case_state.case_state_name)
         self.ui.addButton.clicked.connect(self.add_widget)
         self.ui.clearButton.clicked.connect(self.clear_widget_list)
         self.listWidget = MyListWidget(self.case_state.id, self)
         self.ui.todoListLayout.addWidget(self.listWidget)
-        for it in self.worker.getCases(case_state):
+        for it in self.worker.getCases(case_state, self.user.id):
             self._add_widget(it)
-        self.my_item_template = QListWidgetItem(self.listWidget)
+
 
     def _add_widget(self, case: Case):
         """
@@ -114,19 +112,19 @@ class CaseListWidget(QWidget):
         my_item.setData(Qt.UserRole, case)
         self.listWidget.addItem(my_item)
 
-        widget = CaseWidget(case)
-        my_item.setSizeHint(widget.sizeHint())
-        self.listWidget.setItemWidget(my_item, widget)
-
-        return widget
-
     @Slot()
     def add_widget(self):
         """
         Слот, вызываемый при нажатии кнопки "Добавить". Добавляет новую задачу в список.
         """
-        case = self.worker.createCase(self.case_state)
-        self._add_widget(case)
+        self.dialog_window = ExtraWindow()
+        self.dialog_window.exec()
+        data = self.dialog_window.get_data()
+        target = data['target']
+        descr = data['description']
+        self._add_widget(self.worker.createCase(self.case_state, target, descr, self.user.id))
+
+
 
     @Slot()
     def clear_widget_list(self):
@@ -136,8 +134,5 @@ class CaseListWidget(QWidget):
         self.worker.deleteCases(self.case_state)
         self.listWidget.clear()
 
-    def __del__(self):
-        """
-        Метод-деструктор, вызывается при удалении объекта CaseListWidget.
-        """
-        self.worker.close_session()
+
+
