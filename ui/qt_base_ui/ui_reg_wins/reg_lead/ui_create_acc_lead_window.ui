@@ -9,20 +9,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>500</height>
+    <width>693</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>560</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>640</width>
-    <height>500</height>
+    <width>1280</width>
+    <height>720</height>
    </size>
   </property>
   <property name="mouseTracking">
@@ -41,15 +47,15 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
-     <width>640</width>
-     <height>500</height>
+     <y>-20</y>
+     <width>701</width>
+     <height>591</height>
     </rect>
    </property>
    <property name="maximumSize">
     <size>
-     <width>640</width>
-     <height>500</height>
+     <width>1280</width>
+     <height>720</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -82,8 +88,19 @@ QPushButton{
 QLineEdit::placeholder {
     color: #888; /* Цвет подсказки */
 }
+QPushButton:hover {
+    background: rgba(0, 128, 255, 50); /* Цвет при наведении */
+    border-color: #666; /* Цвет границы при наведении */
+    color: #eee; /* Цвет текста при наведении */
+}
+
+
+/* Подсказка в полях ввода */
+QLineEdit::placeholder {
+    color: #888; /* Цвет подсказки */
+}
 QPushButton:pressed {
-    background: rgba(0, 128, 255, 50); /* Цвет при нажатии */
+    background: rgba(0, 128, 255, 90); /* Цвет при нажатии */
     border-color: #666; /* Цвет границы при нажатии */
     color: #eee; /* Цвет текста при нажатии */
 }
@@ -91,7 +108,10 @@ QPushButton:pressed {
 QLineEdit, QLabel {
     color: white; /* Черный цвет текста */
 }
-</string>
+
+QLineEdit::hover {
+    border: 2px solid lightblue; /* Цвет границы при наведении курсора */
+}</string>
    </property>
    <widget class="QLineEdit" name="name_line">
     <property name="enabled">
@@ -99,10 +119,10 @@ QLineEdit, QLabel {
     </property>
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>290</y>
+      <x>240</x>
+      <y>330</y>
       <width>230</width>
-      <height>31</height>
+      <height>40</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -115,7 +135,7 @@ QLineEdit, QLabel {
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Name</string>
+     <string>Имя </string>
     </property>
    </widget>
    <widget class="QPushButton" name="create_acc_but">
@@ -124,8 +144,8 @@ QLineEdit, QLabel {
     </property>
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>350</y>
+      <x>304</x>
+      <y>450</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -155,10 +175,10 @@ QLineEdit, QLabel {
     </property>
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>170</y>
+      <x>240</x>
+      <y>210</y>
       <width>230</width>
-      <height>31</height>
+      <height>40</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -171,22 +191,34 @@ QLineEdit, QLabel {
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Login</string>
+     <string>Логин</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>90</y>
-      <width>201</width>
-      <height>41</height>
+      <x>237</x>
+      <y>50</y>
+      <width>231</width>
+      <height>50</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>201</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>250</width>
+      <height>70</height>
+     </size>
     </property>
     <property name="font">
      <font>
       <family>Tahoma</family>
-      <pointsize>20</pointsize>
+      <pointsize>22</pointsize>
      </font>
     </property>
     <property name="text">
@@ -199,10 +231,10 @@ QLineEdit, QLabel {
     </property>
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>230</y>
+      <x>240</x>
+      <y>270</y>
       <width>230</width>
-      <height>31</height>
+      <height>40</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -218,7 +250,38 @@ QLineEdit, QLabel {
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Password</string>
+     <string>Пароль</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="code_label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>130</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Код команды:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="warning_label">
+    <property name="geometry">
+     <rect>
+      <x>253</x>
+      <y>160</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

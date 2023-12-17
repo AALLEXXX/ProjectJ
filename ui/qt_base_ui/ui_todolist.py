@@ -31,11 +31,19 @@ class Ui_ToDoListWidget(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.groupBox = QGroupBox(ToDoListWidget)
         self.groupBox.setObjectName(u"groupBox")
+        font1 = QFont()
+        font1.setPointSize(25)
+        font1.setBold(True)
+        self.groupBox.setFont(font1)
         self.groupBox.setAlignment(Qt.AlignCenter)
         self.verticalLayout = QVBoxLayout(self.groupBox)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.addButton = QPushButton(self.groupBox)
         self.addButton.setObjectName(u"addButton")
+        font2 = QFont()
+        font2.setPointSize(15)
+        font2.setBold(False)
+        self.addButton.setFont(font2)
 
         self.verticalLayout.addWidget(self.addButton)
 
@@ -46,6 +54,7 @@ class Ui_ToDoListWidget(object):
 
         self.clearButton = QPushButton(self.groupBox)
         self.clearButton.setObjectName(u"clearButton")
+        self.clearButton.setFont(font2)
 
         self.verticalLayout.addWidget(self.clearButton)
 

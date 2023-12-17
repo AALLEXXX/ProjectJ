@@ -10,20 +10,24 @@ def get_engin(user, passwd, host, db):
     return engin
 
 
-
 def get_engin_from_settings():
     keys = ['pguser', 'pgpasswd', 'pghost', 'pgdb']
     if not all(key in keys for key in settings.keys()):
         raise Exception('Bad config file')
     return get_engin(settings['pguser'],
-                  settings['pgpasswd'],
-                  settings['pghost'],
-                  settings['pgdb'])
+                     settings['pgpasswd'],
+                     settings['pghost'],
+                     settings['pgdb'])
+
+
 engin = get_engin_from_settings()
+
+
 def get_session():
     engin = get_engin_from_settings()
     session = sessionmaker(bind=engin, expire_on_commit=False)
     return session
+
 
 Session = get_session()
 

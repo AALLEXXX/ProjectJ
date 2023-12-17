@@ -19,3 +19,5 @@ def generate_all_ui2py(path: str):
 
 if __name__ == '__main__':
     generate_all_ui2py(os.path.dirname((os.path.abspath(__file__))))
+
+                       

@@ -91,21 +91,33 @@ QLineEdit, QLabel {
       <height>31</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="placeholderText">
-     <string>login</string>
+     <string>Логин</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="create_acc_but">
+   <widget class="QPushButton" name="create_acc_prog_but">
     <property name="geometry">
      <rect>
-      <x>257</x>
-      <y>360</y>
+      <x>150</x>
+      <y>400</y>
       <width>140</width>
       <height>32</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
-     <string>Create accaunt</string>
+     <string>Создать аккаунт</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password_text">
@@ -117,18 +129,36 @@ QLineEdit, QLabel {
       <height>31</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="placeholderText">
-     <string>password</string>
+     <string>Пароль</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>293</x>
-      <y>100</y>
-      <width>61</width>
-      <height>31</height>
+      <y>80</y>
+      <width>65</width>
+      <height>35</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>65</width>
+      <height>35</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>60</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true">
@@ -142,13 +172,80 @@ font: 26pt &quot;Apple Symbols&quot;;</string>
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>300</y>
+      <y>310</y>
       <width>113</width>
       <height>32</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
      <string>Войти</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create_acc_lead_but">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>400</y>
+      <width>140</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>Создать аккаунт</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>372</y>
+      <width>130</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Для программистов</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>367</x>
+      <y>374</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Для руководителей</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="warning_label">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>280</y>
+      <width>201</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

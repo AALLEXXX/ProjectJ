@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>319</width>
-    <height>307</height>
+    <height>365</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,6 +33,9 @@ border-radius: 5px;</string>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <widget class="QGroupBox" name="groupBox_2">
+     <property name="cursor">
+      <cursorShape>OpenHandCursor</cursorShape>
+     </property>
      <property name="title">
       <string/>
      </property>
@@ -43,7 +46,7 @@ border-radius: 5px;</string>
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>14</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -74,7 +77,7 @@ color: rgb(0, 0, 0);</string>
        <widget class="QGroupBox" name="groupBox">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <pointsize>14</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -93,35 +96,104 @@ color: rgb(0, 0, 0);</string>
           <number>20</number>
          </property>
          <item>
-          <widget class="QTextEdit" name="descriptionEdit">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
+          <widget class="QPlainTextEdit" name="descriptionEdit">
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
-           </property>
-           <property name="html">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+color:black;</string>
            </property>
           </widget>
          </item>
         </layout>
        </widget>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="clear_but">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>34</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>44</width>
+            <height>44</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+border-image: url(:/icons/icons8-мусор-64.png);
+    min-width: 10px;
+    max-width: 20px;
+    min-height: 10px;
+    max-height: 20px;
+    background-color: white;
+    border: 2px solid #dddddd;
+    border-radius: 5px; /* Половина минимального значения (min(ширина, высота) / 2) */
+    padding: 10px;
+color:black;
+}
+
+QPushButton:hover {
+    background-color: #f8f8f8;
+}
+
+QPushButton:pressed {
+    background-color: #dcdcdc;
+    border: 2px solid #aaaaaa;
+}
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="status_case">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Уровень: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="author_case">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Автор: </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

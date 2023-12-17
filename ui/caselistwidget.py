@@ -20,7 +20,8 @@ class MyListWidget(QListWidget):
     :param parent: Родительский виджет.
     :type parent: QWidget
     """
-    def __init__(self, id_state: int, parent=None):
+
+    def __init__(self, id_state: int, parent=None, worker: Worker = None, case_list=None):
         """
         Инициализирует экземпляр класса MyListWidget.
 
@@ -32,14 +33,14 @@ class MyListWidget(QListWidget):
         """
 
         super(MyListWidget, self).__init__(parent)
-
+        self.worker = worker
         self.id_state = id_state
+        self.case_list = case_list
         self.setDragDropMode(QAbstractItemView.DragDrop)
         self.setDefaultDropAction(Qt.MoveAction)
         self.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.setAcceptDrops(True)
         self.model().rowsInserted.connect(self.handleRowsInserted, Qt.QueuedConnection)
-
 
     def handleRowsInserted(self, parent, first, last):
         """
@@ -57,14 +58,16 @@ class MyListWidget(QListWidget):
         for it in range(first, last + 1):
             item = self.item(it)
             if item is not None:
-                data:Case = item.data(Qt.UserRole)
+                data = item.data(Qt.UserRole)
                 if data is not None and data.case_state != self.id_state:
-                    data:Case
+                    data: Case
                     data.case_state = self.id_state
                     data.update_state()
-                widget = CaseWidget(data)
+                widget = CaseWidget(data, self.worker, self.case_list, data.status_case,
+                                    author_name= data.author_case)
                 item.setSizeHint(widget.sizeHint())
                 self.setItemWidget(item, widget)
+
 
 class CaseListWidget(QWidget):
     """
@@ -76,6 +79,7 @@ class CaseListWidget(QWidget):
     :param worker: Объект Worker, предоставляющий интерфейс для работы с базой данных.
     :type worker: Worker
     """
+
     def __init__(self, case_state: CaseState, worker: Worker, user: User):
         """
         Инициализирует экземпляр класса CaseListWidget.
@@ -92,14 +96,21 @@ class CaseListWidget(QWidget):
         self.case_state = case_state
         self.worker = worker
         self.user = user
+        self.set_setting(case_state)
         self.ui.groupBox.setTitle(case_state.case_state_name)
         self.ui.addButton.clicked.connect(self.add_widget)
         self.ui.clearButton.clicked.connect(self.clear_widget_list)
-        self.listWidget = MyListWidget(self.case_state.id, self)
+        self.listWidget = MyListWidget(self.case_state.id, self, self.worker, self)
         self.ui.todoListLayout.addWidget(self.listWidget)
-        for it in self.worker.getCases(case_state, self.user.id):
+        self.update_widget()
+
+    def update_widget(self):
+        for it in self.worker.getCases(self.case_state, self.user.id):
             self._add_widget(it)
 
+    def set_setting(self, case_state: CaseState):
+        if case_state.case_state_name.lower() != "идея":
+            self.ui.addButton.hide()
 
     def _add_widget(self, case: Case):
         """
@@ -117,15 +128,17 @@ class CaseListWidget(QWidget):
         """
         Слот, вызываемый при нажатии кнопки "Добавить". Добавляет новую задачу в список.
         """
-        self.dialog_window = ExtraWindow()
+        self.dialog_window = ExtraWindow(self.worker)
         self.dialog_window.exec()
         data = self.dialog_window.get_data()
-        target = data['target']
-        descr = data['description']
-        self._add_widget(self.worker.createCase(self.case_state, target, descr, self.user.id))
-
-
-
+        if data != None:
+            target = data['target']
+            descr = data['description']
+            status_case = data['status_case']
+            case = self.worker.createCase(self.case_state, target, descr, self.user, status_case=status_case)
+            self._add_widget(case)
+        else:
+            print('нельзя создать кейс с пустыми полями')
     @Slot()
     def clear_widget_list(self):
         """
@@ -133,6 +146,3 @@ class CaseListWidget(QWidget):
         """
         self.worker.deleteCases(self.case_state)
         self.listWidget.clear()
-
-
-

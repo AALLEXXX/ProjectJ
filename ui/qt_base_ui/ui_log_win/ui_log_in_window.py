@@ -8,13 +8,16 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect)
-from PySide6.QtWidgets import (QLabel, QLineEdit,
-                               QPushButton, QSizePolicy, QWidget)
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QLineEdit,
+    QPushButton, QSizePolicy, QWidget)
 from ui.qt_base_ui.ui_log_win import res_rc
-
-
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
@@ -86,20 +89,48 @@ class Ui_Dialog(object):
         self.login_text = QLineEdit(self.bgwidget)
         self.login_text.setObjectName(u"login_text")
         self.login_text.setGeometry(QRect(218, 160, 211, 31))
-        self.create_acc_but = QPushButton(self.bgwidget)
-        self.create_acc_but.setObjectName(u"create_acc_but")
-        self.create_acc_but.setGeometry(QRect(257, 360, 140, 32))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.login_text.sizePolicy().hasHeightForWidth())
+        self.login_text.setSizePolicy(sizePolicy1)
+        self.create_acc_prog_but = QPushButton(self.bgwidget)
+        self.create_acc_prog_but.setObjectName(u"create_acc_prog_but")
+        self.create_acc_prog_but.setGeometry(QRect(150, 400, 140, 32))
+        sizePolicy1.setHeightForWidth(self.create_acc_prog_but.sizePolicy().hasHeightForWidth())
+        self.create_acc_prog_but.setSizePolicy(sizePolicy1)
         self.password_text = QLineEdit(self.bgwidget)
         self.password_text.setObjectName(u"password_text")
         self.password_text.setGeometry(QRect(218, 230, 211, 31))
+        sizePolicy1.setHeightForWidth(self.password_text.sizePolicy().hasHeightForWidth())
+        self.password_text.setSizePolicy(sizePolicy1)
         self.label = QLabel(self.bgwidget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(293, 100, 61, 31))
+        self.label.setGeometry(QRect(293, 80, 65, 35))
+        self.label.setMinimumSize(QSize(65, 35))
+        self.label.setMaximumSize(QSize(100, 60))
         self.label.setStyleSheet(u"\n"
 "font: 26pt \"Apple Symbols\";")
         self.log_in_but = QPushButton(self.bgwidget)
         self.log_in_but.setObjectName(u"log_in_but")
-        self.log_in_but.setGeometry(QRect(270, 300, 113, 32))
+        self.log_in_but.setGeometry(QRect(270, 310, 113, 32))
+        sizePolicy1.setHeightForWidth(self.log_in_but.sizePolicy().hasHeightForWidth())
+        self.log_in_but.setSizePolicy(sizePolicy1)
+        self.create_acc_lead_but = QPushButton(self.bgwidget)
+        self.create_acc_lead_but.setObjectName(u"create_acc_lead_but")
+        self.create_acc_lead_but.setGeometry(QRect(360, 400, 140, 32))
+        sizePolicy1.setHeightForWidth(self.create_acc_lead_but.sizePolicy().hasHeightForWidth())
+        self.create_acc_lead_but.setSizePolicy(sizePolicy1)
+        self.label_2 = QLabel(self.bgwidget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(154, 372, 130, 20))
+        self.label_3 = QLabel(self.bgwidget)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(367, 374, 131, 16))
+        self.warning_label = QLabel(self.bgwidget)
+        self.warning_label.setObjectName(u"warning_label")
+        self.warning_label.setGeometry(QRect(225, 280, 201, 16))
+        self.warning_label.setAlignment(Qt.AlignCenter)
 
         self.retranslateUi(Dialog)
 
@@ -108,10 +139,14 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.login_text.setPlaceholderText(QCoreApplication.translate("Dialog", u"login", None))
-        self.create_acc_but.setText(QCoreApplication.translate("Dialog", u"Create accaunt", None))
-        self.password_text.setPlaceholderText(QCoreApplication.translate("Dialog", u"password", None))
+        self.login_text.setPlaceholderText(QCoreApplication.translate("Dialog", u"\u041b\u043e\u0433\u0438\u043d", None))
+        self.create_acc_prog_but.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0430\u043a\u043a\u0430\u0443\u043d\u0442", None))
+        self.password_text.setPlaceholderText(QCoreApplication.translate("Dialog", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u0412\u0445\u043e\u0434", None))
         self.log_in_but.setText(QCoreApplication.translate("Dialog", u"\u0412\u043e\u0439\u0442\u0438", None))
+        self.create_acc_lead_but.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0430\u043a\u043a\u0430\u0443\u043d\u0442", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"\u0414\u043b\u044f \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0441\u0442\u043e\u0432", None))
+        self.label_3.setText(QCoreApplication.translate("Dialog", u"\u0414\u043b\u044f \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u0435\u0439", None))
+        self.warning_label.setText("")
     # retranslateUi
 

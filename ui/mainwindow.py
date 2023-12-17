@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         result = login_window.exec_()
         if result == QDialog.Accepted:
             self.user = login_window.log_in_but()
-            self.ui.user_name_label.setText(self.user.name)
+            self.ui.pushButton.setText(self.user.name)
             self.show()
             for it in self.worker.getStates():
                 self.ui.todoListLayout.addWidget(CaseListWidget(it, self.worker, user=self.user))
@@ -38,3 +38,4 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event: PySide6.QtGui.QCloseEvent) -> None:
         self.worker.save_data()
+        self.worker.session.close()

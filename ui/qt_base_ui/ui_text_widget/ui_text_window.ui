@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>758</width>
+    <height>478</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#Form{border-image: url(:/imgaes/macos-monterey-1920x1080-23425.png);
+background-size: cover;
+}
+
+QPlainTextEdit {
+    background-color: rgba(255, 255, 255, 50); /* Прозрачность фона поля ввода */
+    border: 1px solid #ccc; /* Обводка поля ввода */
+    border-radius: 5px; /* Закругление углов поля ввода */
+    padding: 5px; /* Отступ внутри поля ввода */
+color:rgb(255, 255, 255)
+}
+
+QPlainTextEdit:hover {
+    background-color: rgba(255, 255, 255, 100); /* Прозрачность фона поля ввода при наведении */
+}
+
+QPlainTextEdit:focus {
+    background-color: rgba(255, 255, 255, 100); /* Прозрачность фона поля ввода при фокусе */
+}
+
+QPushButton {
+    background-color: rgba(100, 100, 255, 100); /* Прозрачность фона кнопки */
+    border: 1px solid #555; /* Обводка кнопки */
+    border-radius: 5px; /* Закругление углов кнопки */
+    padding: 5px 10px; /* Отступы внутри кнопки */
+	color:rgb(255, 255, 255)
+}
+
+QPushButton:hover {
+    background-color: rgba(100, 100, 255, 150); /* Прозрачность фона кнопки при наведении */
+}
+
+QPushButton:pressed {
+    background-color: rgba(100, 100, 255, 200); /* Прозрачность фона кнопки при нажатии */
+}</string>
+  </property>
+  <widget class="QPushButton" name="create_case_but">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>360</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>Создать</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>140</y>
+     <width>169</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QCheckBox" name="blocker_checkBox">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Блокирующая</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="critical_checkBox">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Критическая </string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="major_checkBox">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Существенная</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="minor_checkBox">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Незначительная</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="trivial_checkBox">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+      <property name="text">
+       <string>Мелочь</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPlainTextEdit" name="descr_TextEdit">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>140</y>
+     <width>381</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Описание</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="target_TextEdit">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>88</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="plainText">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Цель</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="ui_text_widget/res.qrc"/>
+ </resources>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>
